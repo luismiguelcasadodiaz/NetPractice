@@ -85,7 +85,7 @@ Goal 2: Same case. I change Host D's IP to 211.191.75.74
 + 1st, change computer B's mask to 255.255.255.224.
 + 2nd, identify network.
   
-  | Name|doted-decimal  |         binari address            |
+  | Name|doted-decimal  |         binary address            |
   |-----|---------------|-----------------------------------|
   | mask|255.255.255.224|11111111.11111111.11111111.11100000|
   |   ip|192.168.041.222|11000000.10101000.00101001.11011110|
@@ -101,14 +101,14 @@ Goal 2: Same case. I change Host D's IP to 211.191.75.74
   #### Goal 2: 
 + 1st, verify that C and D have the same mask
 
-  | Name|doted-decimal  |         binari address            |
+  | Name|doted-decimal  |         binary address            |
   |-----|---------------|-----------------------------------|
   |    C|255.255.255.252|11111111.11111111.11111111.11111100|
   |    D|            /30|11111111.11111111.11111111.11111100|
 
 + 2nd, choose a class C network. We can not use 127.0.0.0/8, as it is a **Loopback address**. A Loopback Address, also known as localhost, refers to an internal address that directs back to the local system. In IPv4, the loopback address is 127.0. 0.1. I chose 192.168.041.220
   
-  | Name|doted-decimal  |         binari address            |
+  | Name|doted-decimal  |         binary address            |
   |-----|---------------|-----------------------------------|
   | mask|255.255.255.252|11111111.11111111.11111111.11111100|
   |   ip|192.168.041.222|11000000.10101000.00101001.11011110|
@@ -121,5 +121,42 @@ Goal 2: Same case. I change Host D's IP to 211.191.75.74
 + 3rd, set Computer C's IP and Computer D's IP.
   Set Computer C's IP to the network's first host number 221. I will assign the network's last host number 222.
 
+### Level 03
   
+![image](https://github.com/user-attachments/assets/81cf9e50-dea4-4dd1-be9b-a8049b373aa0)
 
++ 1st, Detect the network we work with. 
+  
+  | Name|doted-decimal  |         binary address            |
+  |-----|---------------|-----------------------------------|
+  | mask|255.255.255.128|11111111.11111111.11111111.10000000|
+  |   ip|104.198.089.125|01101000.11000110.01011001.01111101|
+  |  and|104.198.089.000|01101000.11000110.01011001.00000000|
+  |  net|104.198.089.000|01101000.11000110.01011001.00000000|
+  |first|104.198.089.001|11000000.10101000.00101001.00000001|
+  | last|104.198.089.126|11000000.10101000.00101001.01111110|
+  | brdc|104.198.089.127|11000000.10101000.00101001.01111111|
+  
++ 2nd, Set the same mask for hosts A, B, and C. 255.255.255.128
++ 3rd, set C's IP to the last host of the network 126. Set B's IP to the first host of the network.
+
+
+  ### Level 04
+  
+![image](https://github.com/user-attachments/assets/b856284b-45fe-4bd8-9044-6330418bf009)
+
+
++ 1st, Detect the network we work with. 
+  
+  | Name|doted-decimal  |         binary address            |
+  |-----|---------------|-----------------------------------|
+  | mask|/23            |11111111.11111111.11111110.00000000|
+  |   ip|085.126.119.132|01010101.01111110.01110111.10000100|
+  |  and|085.126.118.000|01010101.01111110.01110110.00000000|
+  |  net|085.126.118.000|01010101.01111110.01110110.00000000|
+  |first|085.126.118.001|01010101.01111110.01110110.00000001|
+  | last|085.126.118.254|01010101.01111110.01110110.11111110|
+  | brdc|085.126.118.255|01010101.01111110.01110110.11111111|
+  
++ 2nd, Set the same mask for hosts A, B, and C. /23
++ 3rd, set Router's R1's IP to the first host of the network 118.001. Set B's IP to the last host of the network 118.254.
