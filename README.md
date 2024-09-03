@@ -160,3 +160,15 @@ Goal 2: Same case. I change Host D's IP to 211.191.75.74
   
 + 2nd, Set the same mask for hosts A, B, and C. /23
 + 3rd, set Router's R1's IP to the first host of the network 118.001. Set B's IP to the last host of the network 118.254.
+
+  I believe this is a weird configuration:
+  |Interface|IP|
+  |R1|85.126.118.001/23|
+  |A1|85.126.118.254/23|
+  |BA|85.126.119.132/23|
+
+
+  ### Level 04
+
+  ![image](https://github.com/user-attachments/assets/daaf4a21-315e-4e9d-9f51-a8392eaa8b80)
+
