@@ -84,7 +84,9 @@ Goal 2: Same case. I change Host D's IP to 211.191.75.74
 Goal 1: 
 + 1st, change computer B's mask to 255.255.255.224.
 + 2nd, identify network.
-  | Name|doted-decimal|binari address|
+  
+  | Name|doted-decimal  |         binari address            |
+  |-----|---------------|-----------------------------------|
   | mask|255.255.255.224|11111111.11111111.11111111.11100000|
   |   ip|192.168.041.222|11000000.10101000.00101001.11011110|
   |  and|192.168.041.192|11000000.10101000.00101001.11000000|
@@ -92,5 +94,6 @@ Goal 1:
   |first|192.168.041.193|11000000.10101000.00101001.11000001|
   | last|192.168.041.222|11000000.10101000.00101001.11011110|
   | brdc|192.168.041.223|11000000.10101000.00101001.11011111|
+  
 + 3rd, set Computer A's IP.
   Computer B has the network's first host number. I will assign the network's last host number 222. 
