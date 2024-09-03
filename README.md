@@ -81,7 +81,7 @@ Goal 2: Same case. I change Host D's IP to 211.191.75.74
 ### Level 02
 ![image](https://github.com/user-attachments/assets/da8f2a17-5472-4714-98fa-9bd3678e7aa6)
 
-Goal 1: 
+#### Goal 1: 
 + 1st, change computer B's mask to 255.255.255.224.
 + 2nd, identify network.
   
@@ -96,4 +96,30 @@ Goal 1:
   | brdc|192.168.041.223|11000000.10101000.00101001.11011111|
   
 + 3rd, set Computer A's IP.
-  Computer B has the network's first host number. I will assign the network's last host number 222. 
+  Computer B has the network's last host number. I will assign the network's first host number 193.
+
+  #### Goal 2: 
++ 1st, verify that C and D have the same mask
+
+  | Name|doted-decimal  |         binari address            |
+  |-----|---------------|-----------------------------------|
+  |    C|255.255.255.252|11111111.11111111.11111111.11111100|
+  |    D|            /30|11111111.11111111.11111111.11111100|
+
++ 2nd, choose a class C network. We can not use 127.0.0.0/8, as it is a **Loopback address**. A Loopback Address, also known as localhost, refers to an internal address that directs back to the local system. In IPv4, the loopback address is 127.0. 0.1. I chose 192.168.041.220
+  
+  | Name|doted-decimal  |         binari address            |
+  |-----|---------------|-----------------------------------|
+  | mask|255.255.255.252|11111111.11111111.11111111.11111100|
+  |   ip|192.168.041.222|11000000.10101000.00101001.11011110|
+  |  and|192.168.041.220|11000000.10101000.00101001.11011100|
+  |  net|192.168.041.220|11000000.10101000.00101001.11011100|
+  |first|192.168.041.221|11000000.10101000.00101001.11011101|
+  | last|192.168.041.222|11000000.10101000.00101001.11011110|
+  | brdc|192.168.041.223|11000000.10101000.00101001.11011111|
+  
++ 3rd, set Computer C's IP and Computer D's IP.
+  Set Computer C's IP to the network's first host number 221. I will assign the network's last host number 222.
+
+  
+
