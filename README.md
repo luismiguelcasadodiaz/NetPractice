@@ -314,6 +314,38 @@ Now the four routing tables are filled like this
 
 ![image](https://github.com/user-attachments/assets/b2964f72-c9cc-4afe-8614-f4fa85225a2a)
 
+we see that internet addreses are in the range 152.236.170.0/26.
+
+Internally we requiere 3 subnet in this range.  a netmask /27 is not enough for 3. we will use /28.
+We have a hint inside route table of router 2. The next-hop is the IP 152.236.170.62
+
+  | Name|doted-decimal  |         binary address            |
+  |-----|---------------|-----------------------------------|
+  | mask/26|255.255.255.240|11111111.11111111.11111111.11000000|
+  |   ip   |156.236.170.001|00111101.11110000.10000110.00000001|
+  |  and   |156.236.170.000|00111101.11110000.10000110.00000000|
+  | net0/26|156.236.170.000|00111101.11110000.10000110.00000000|
+  | ip net1|156.236.170.062|00111101.11110000.10000110.00111110|
+  | mask/28|156.236.170.062|11111111.11111111.11111111.11110000|
+  | net1   |156.236.170.048|00111101.11110000.10000110.00110000|
+  | net2/28|156.236.170.032|00111101.11110000.10000110.00100000|
+  | net3/28|156.236.170.016|00111101.11110000.10000110.00010000|
+  | net4/28|156.236.170.000|00111101.11110000.10000110.00000000|
+
+  Once selected the 3 networks, as each network has only two devices i will use the first adn the last active IP from each network.
+| Network |Interface| IP            |
+|---------|---------|---------------|
+|Network 1| R21     |156.236.170.049|
+|Network 1| R13     |156.236.170.062|
+|Network 2| D1      |156.236.170.033|
+|Network 2| R23     |156.236.170.046|
+|Network 3| R22     |156.236.170.017|
+|Network 3| C1      |156.236.170.030|
+  
+  
+
+
+
 + 1st identify internet network
 
   | Name|doted-decimal  |         binary address            |
