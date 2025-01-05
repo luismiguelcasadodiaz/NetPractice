@@ -232,9 +232,7 @@ In NetPractice, the routing table consists of 2 elements:
 ![image](https://github.com/user-attachments/assets/11d39f0b-d1f1-4310-95a5-08e25a769610)
 
 
-
-
-We have to connect Host A (61.240.134.227/25) to internet. 
+We have to connect Host A (61.240.134.227/24) to internet. 
 In this level, it is the first time we deal with the internet thru a hot IP. The internet connection cannot have an IP address in the reserved private IP ranges
 
 |rfc 1918 name|       IP adress range       | Number of addresses|
@@ -243,8 +241,8 @@ In this level, it is the first time we deal with the internet thru a hot IP. The
 |20-bit block |172.16.0.0 - 172.31.255.255  | 1,048,576|
 |16-bit block |10.0.0.0 - 10.255.255.255    | 16,777,216|
 
-we have a router wiht two interfaces
-The interface connecting to internet is R2 (163.172.250.12). The interface connecting to local network is R1 (163.172.250.1)
+we have a router with two interfaces.
+The router's interface connecting to internet is R2 (163.172.250.12). The interface connecting to local network is R1 (163.172.250.1). I have to remark here that this IP for interface R1 is a "**loopback number**" the router uses internally inside the routes table. Loopback interfaces are virtual interfaces within the router itself. They are primarily used for internal routing purposes and don't directly connect to any physical network. I remark this point cause we have a different interface R1 IP (61.240.134.254) related to the network address range.
 We got the hot IP from internet in the route table (61.240.134.0/31) with a next-hop thru router interface R2 (163.172.250.12)
 
   
@@ -263,7 +261,7 @@ We got the hot IP from internet in the route table (61.240.134.0/31) with a next
   + 2nd, chose an IP for interface R1 (last-> 061.240.134.254),
   + 3rd, add it to host A's route table as next-hop for default destination
   + 4th, set in router's route table default destination to internal interface R1
-  + 5th, set in router's route table local networl broadcast destinatin  (21.240.134.225/25) to internet interface R2.
+  + 5th, set in router's route table local network broadcast destinatin  (21.240.134.255/25) to internet interface R2.
   
 ### level 07
 
