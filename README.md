@@ -174,7 +174,7 @@ Goal 2: Same case. I change Host D's IP to 211.191.75.74
 ![image](https://github.com/user-attachments/assets/b42b183c-1c18-4a52-92b6-a0428d6fe393)
 
 + This is our first router to connect two networks. Let's identify two networks, to fill route tables properly.
-+ Identification of network A
++ 1st, Identification of network A
   
   | Name|doted-decimal  |         binary address            |
   |-----|---------------|-----------------------------------|
@@ -187,7 +187,7 @@ Goal 2: Same case. I change Host D's IP to 211.191.75.74
   | brdc|086.184.183.127|01010110.10111000.10110111.01111111|
   
 
-+ Identification of network B
++ 2nd, Identification of network B
 
   | Name|doted-decimal  |         binary address            |
   |-----|---------------|-----------------------------------|
@@ -199,6 +199,10 @@ Goal 2: Same case. I change Host D's IP to 211.191.75.74
   | last|161.154.255.254|10100001.10011010.11111111.11111110|
   | brdc|161.154.255.255|10100001.10011010.01110110.11111111|
   
-
++ 3rd, choose one IP for host A between  001..126 (86.184.183.124).
++ 4th, set Host A route table default to INterface R1 in router.
++ 5th, Choose one IP for host B between 0001..254 (161.154.207.253).
++ 6th, set Host B route table default to interface R2.
+  
   ### Level 06
 ![image](https://github.com/user-attachments/assets/95ab7261-5abe-42b6-be25-532bf56b1574)
