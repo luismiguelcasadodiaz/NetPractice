@@ -167,7 +167,7 @@ The switch does not have any interfaces since it only distributes packets to its
 + 2nd, Set the same mask for hosts A, B, and C. /23
 + 3rd, set Router's R1's IP to the first host of the network 118.001. Set B's IP to the last host of the network 118.254.
 
-  I believe this is a weird configuration:
+  I believe this is a weird configuration....
   
   |Interface|IP|
   |---------|-----|
@@ -175,12 +175,14 @@ The switch does not have any interfaces since it only distributes packets to its
   |A1|85.126.118.254/23|
   |BA|85.126.119.132/23|
 
+  ...but the /23 has the last bit of 3rd byte available, so x.x.118.x and x.x.119.x belong to same network.
+
 
   ### Level 05
 
 ![image](https://github.com/user-attachments/assets/b42b183c-1c18-4a52-92b6-a0428d6fe393)
 
-In this configuraion the router is functional. There are two networks to connect. Since the router separates different networks, the range of possible IP addresses on one of its interfaces must not overlap with the range of its other interfaces. An overlap in the IP address range would imply that the interfaces are on the same network.
+In this configuraion the router is functional. There are two networks to connect. Since the router separates different networks, the range of possible IP addresses on one of its interfaces must not overlap with the range of its other interfaces. An **overlap** in the IP address range would imply that the interfaces are on the same network.
 
 Here is the first time we see a route. A routing table is a data table stored in a **router** or a **network host** that lists the routes to particular network destinations. 
 
@@ -227,29 +229,99 @@ In NetPractice, the routing table consists of 2 elements:
 + 6th, set Host B route table destination to default to and next-hop to interface R2.
   
   ### Level 06
-![image](https://github.com/user-attachments/assets/3be0c05b-7049-46e3-be66-9b1e5161d569)
+![image](https://github.com/user-attachments/assets/9a47bb19-08e8-49ca-a3d8-6d6540cbb02f)
 
 
-We have to connect Host A network to internet. 
-In this level, it is the first time we deal with the internet thru a hot IP. the internet connection cannot have an IP address in the reserved private IP ranges
+
+We have to connect Host A (61.240.134.227/25) to internet. 
+In this level, it is the first time we deal with the internet thru a hot IP. The internet connection cannot have an IP address in the reserved private IP ranges
 
 |rfc 1918 name|       IP adress range       | Number of addresses|
 |-------------|-----------------------------|--------------------|
 |24-bit block |192.168.0.0 - 192.168.255.255| 65,536 |
 |20-bit block |172.16.0.0 - 172.31.255.255  | 1,048,576|
 |16-bit block |10.0.0.0 - 10.255.255.255    | 16,777,216|
+
+we have a router wiht two interfaces
+The interface connecting to internet is R2 (163.172.250.12). The interface connecting to local network is R1 (163.172.250.1)
+We got the hot IP from internet in the route table (61.240.134.0/31) with a next-hop thru router interface R2 (163.172.250.12)
+
   
-+ 1st, identification of netwoerk A
++ 1st, identification of network A
 
   | Name|doted-decimal  |         binary address            |
   |-----|---------------|-----------------------------------|
   | mask|255.255.255.128|11111111.11111111.11111111.10000000|
-  |   ip|061.240.137.227|00111101.11110000.10001001.11100011|
-  |  and|061.240.137.000|00111101.11110000.10001001.10000000|
-  |  net|061.240.137.128|00111101.11110000.10001001.10000000|
-  |first|061.240.137.129|00111101.11110000.10001001.10000001|
-  | last|061.240.137.254|00111101.11110000.10001001.11111110|
-  | brdc|061.240.137.255|00111101.11110000.10001001.11111111|
+  |   ip|061.240.134.227|00111101.11110000.10000110.11100011|
+  |  and|061.240.134.128|00111101.11110000.10000110.10000000|
+  |  net|061.240.134.128|00111101.11110000.10000110.10000000|
+  |first|061.240.134.129|00111101.11110000.10000110.10000001|
+  | last|061.240.134.254|00111101.11110000.10000110.11111110|
+  | brdc|061.240.134.255|00111101.11110000.10000110.11111111|
 
-  +2nd, chose an IP for interface R1, and add it to route table
+  + 2nd, chose an IP for interface R1 (last-> 061.240.134.254),
+  + 3rd, add it to host A's route table as next-hop for default destination
+  + 4th, set in router's route table default destination to internal interface R1
+  + 5th, set in router's route table local networl broadcast destinatin  (21.240.134.225/25) to internet interface R2.
   
+### level 07
+
+![image](https://github.com/user-attachments/assets/609b3f23-ac8b-4df3-b35a-96acae1f12eb)
+
+In this case we hace two routers (R1 & R2) and three networks:
++ Network 1: Host A and interface 1 of Router 1 (Two IPs)
++ Network 2: interface 2 of router 1 and interface 1 of router 2 (Two IPs).
++ Network 3: Interface 2 of router 2 and Host C (Two IPs).
+
+No overlap is allowed in 3 network's ips.
+
+We requires only two active iPs per network. So a  /30 mask fits our requirements: (net, firs, last, broadcast)
+
+For network 1, Interface 1 of router 1 has an IP 109.198.14.1. Together with the mask /30 we have:
+|name     |     ip     | Interface |
+|---------|------------|-----------|
+|net      |109.198.14.0|           |
+|first    |109.198.14.1| R11       |
+|last     |109.198.14.2| A1        |
+|broadcast|109.198.14.3|           |
+
+For network 2, Interface 2 of router 1 has an IP 109.198.14.254. Together with the mask /30 we have:
+|name     |     ip       | Interface |
+|---------|--------------|-----------|
+|net      |109.198.14.252|           |
+|first    |109.198.14.253| R21       |      
+|last     |109.198.14.254| R12       |
+|broadcast|109.198.14.255|           | 
+
+For network 3, the only restriciotn is not overlap with previous networks.
+|name     |     ip      | Interface |
+|---------|-------------|-----------|
+|net      |109.198.14.40|           |
+|first    |109.198.14.41| R22       |      
+|last     |109.198.14.42| C1        |
+|broadcast|109.198.14.43|           | 
+
+Now the four routing tables are filled like this
+
+|Table   |destination|next-hop|
+|--------|----------------|-------------|
+|Host A  |109.198.14.40/30|109.198.14.1|
+|Host C  |109.198.14.0/30 |109.198.14.41|
+|Router 1|109.198.14.40/30|109.198.14.253|
+|Router 2|109.198.14.0/30|109.198.14.254|
+
+### Level 8
+
+![image](https://github.com/user-attachments/assets/b2964f72-c9cc-4afe-8614-f4fa85225a2a)
+
++ 1st identify internet network
+
+  | Name|doted-decimal  |         binary address            |
+  |-----|---------------|-----------------------------------|
+  | mask|255.255.255.254|11111111.11111111.11111111.11111110|
+  |   ip|061.240.134.227|00111101.11110000.10000110.00000001|
+  |  and|061.240.134.000|00111101.11110000.10000110.00000000|
+  |  net|061.240.134.000|00111101.11110000.10000110.00000000|
+  |first|078.147.070.129|01001110.10010011.01000110.10000001|
+  | last|078.147.070.129|01001110.10010011.01000110.10000001|
+  | brdc|078.147.070.129|01001110.10010011.01000110.11111111|
