@@ -75,7 +75,8 @@ The next section explains how networks can be divided using subnet masks.
 ### Level 01
 ![image](https://github.com/user-attachments/assets/8405f5b4-dc4e-4f13-8b34-a851a2f95a4a)
 
-Goal 1: Both computers have the same mask, I must put both of them in the same network so  I change MY PC's IP to 104.96.23.11 
+Goal 1: Both computers have the same mask, I must put both of them in the same network so  I change MY PC's IP to 104.96.23.11
+
 Goal 2: Same case. I change Host D's IP to 211.191.75.74
 
 ### Level 02
