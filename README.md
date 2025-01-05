@@ -186,7 +186,7 @@ Goal 2: Same case. I change Host D's IP to 211.191.75.74
   | brdc|086.184.183.127|01010110.10111000.10110111.01111111|
   
 
-+ Identification of network
++ Identification of network B
 
   | Name|doted-decimal  |         binary address            |
   |-----|---------------|-----------------------------------|
@@ -198,3 +198,6 @@ Goal 2: Same case. I change Host D's IP to 211.191.75.74
   | last|161.154.255.254|10100001.10011010.11111111.11111110|
   | brdc|161.154.255.255|10100001.10011010.01110110.11111111|
   
+
+  ### Level 06
+![image](https://github.com/user-attachments/assets/95ab7261-5abe-42b6-be25-532bf56b1574)
