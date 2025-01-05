@@ -126,6 +126,9 @@ Goal 2: Same case. I change Host D's IP to 211.191.75.74
   
 ![image](https://github.com/user-attachments/assets/81cf9e50-dea4-4dd1-be9b-a8049b373aa0)
 
+we find the first switch. A switch is a device that connects multiple devices together in a single network. 
+Unlike a router, the switch does not have any interfaces since it only distributes packets to its local network, and cannot talk directly to a network outside of its own.
+
 + 1st, Detect the network we work with. 
   
   | Name|doted-decimal  |         binary address            |
@@ -145,7 +148,9 @@ Goal 2: Same case. I change Host D's IP to 211.191.75.74
   ### Level 04
   
 ![image](https://github.com/user-attachments/assets/b856284b-45fe-4bd8-9044-6330418bf009)
-
+ 
+ we found a router. It is useless in this configuration cause we have only one network. 
+ we do not need to connect differente networks, that it is what the router was designed for.
 
 + 1st, Detect the network we work with. 
   
@@ -172,6 +177,22 @@ Goal 2: Same case. I change Host D's IP to 211.191.75.74
   ### Level 05
 
 ![image](https://github.com/user-attachments/assets/b42b183c-1c18-4a52-92b6-a0428d6fe393)
+
+In this configuraion the router is functional. There are two networks to connect. Since the router separates different networks, the range of possible IP addresses on one of its interfaces must not overlap with the range of its other interfaces. An overlap in the IP address range would imply that the interfaces are on the same network.
+
+Here is the first time we see a route. A routing table is a data table stored in a **router** or a **network host** that lists the routes to particular network destinations. 
+
+![image](https://github.com/user-attachments/assets/4e6635ed-dcb0-4fab-ba27-744f0cc0ad1d)
+
+
+In NetPractice, the routing table consists of 2 elements:
+
+    + **Destination**(left): The destination specifies a **network address** on which a host is the end target of the packets. The route of default or 0.0.0.0/0, is the route that takes effect when no other route is available for an IP destination address. The default route will use the next-hop address to send the packets on their way without giving a specific destination. The default route will match any network.
+
+    + **Next hop**(right): The next hop refers to the **next closest router a packet can go through**. It is the IP address of the next router on the packet's way. Every single router maintains its routing table with a next hop address.
+
+
+
 
 + This is our first router to connect two networks. Let's identify two networks, to fill route tables properly.
 + 1st, Identification of network A
@@ -200,9 +221,25 @@ Goal 2: Same case. I change Host D's IP to 211.191.75.74
   | brdc|161.154.255.255|10100001.10011010.01110110.11111111|
   
 + 3rd, choose one IP for host A between  001..126 (86.184.183.124).
-+ 4th, set Host A route table default to INterface R1 in router.
++ 4th, set Host A route table destination to other network (161.154.192.0/18) to and the next-hop to Interface R1 in router.
 + 5th, Choose one IP for host B between 0001..254 (161.154.207.253).
-+ 6th, set Host B route table default to interface R2.
++ 6th, set Host B route table destination to default to and next-hop to interface R2.
   
   ### Level 06
 ![image](https://github.com/user-attachments/assets/95ab7261-5abe-42b6-be25-532bf56b1574)
+
++ we have to connect Host A network to internet.
++ 1st, identification of netwoerk A
+
+  | Name|doted-decimal  |         binary address            |
+  |-----|---------------|-----------------------------------|
+  | mask|255.255.255.128|11111111.11111111.11111111.10000000|
+  |   ip|061.240.137.227|00111101.11110000.10001001.11100011|
+  |  and|061.240.137.000|00111101.11110000.10001001.10000000|
+  |  net|061.240.137.128|00111101.11110000.10001001.10000000|
+  |first|061.240.137.129|00111101.11110000.10001001.10000001|
+  | last|061.240.137.254|00111101.11110000.10001001.11111110|
+  | brdc|061.240.137.255|00111101.11110000.10001001.11111111|
+
+  +2nd, chose an IP for interface R1, and add it to route table
+  
