@@ -168,7 +168,9 @@ The switch does not have any interfaces since it only distributes packets to its
 + 3rd, set Router's R1's IP to the first host of the network 118.001. Set B's IP to the last host of the network 118.254.
 
   I believe this is a weird configuration:
+  
   |Interface|IP|
+  |---------|-----|
   |R1|85.126.118.001/23|
   |A1|85.126.118.254/23|
   |BA|85.126.119.132/23|
@@ -220,14 +222,23 @@ In NetPractice, the routing table consists of 2 elements:
   | brdc|161.154.255.255|10100001.10011010.01110110.11111111|
   
 + 3rd, choose one IP for host A between  001..126 (86.184.183.124).
-+ 4th, set Host A route table destination to other network (161.154.192.0/18) to and the next-hop to Interface R1 in router.
++ 4th, set Host A route table destination to other network (161.154.192.0/18) to and the next-hop to Interface R1 in router. I set it to other network cause ther are only two networks.
 + 5th, Choose one IP for host B between 0001..254 (161.154.207.253).
 + 6th, set Host B route table destination to default to and next-hop to interface R2.
   
   ### Level 06
-![image](https://github.com/user-attachments/assets/95ab7261-5abe-42b6-be25-532bf56b1574)
+![image](https://github.com/user-attachments/assets/3be0c05b-7049-46e3-be66-9b1e5161d569)
 
-+ we have to connect Host A network to internet.
+
+We have to connect Host A network to internet. 
+In this level, it is the first time we deal with the internet thru a hot IP. the internet connection cannot have an IP address in the reserved private IP ranges
+
+|rfc 1918 name|       IP adress range       | Number of addresses|
+|-------------|-----------------------------|--------------------|
+|24-bit block |192.168.0.0 - 192.168.255.255| 65,536 |
+|20-bit block |172.16.0.0 - 172.31.255.255  | 1,048,576|
+|16-bit block |10.0.0.0 - 10.255.255.255    | 16,777,216|
+  
 + 1st, identification of netwoerk A
 
   | Name|doted-decimal  |         binary address            |
