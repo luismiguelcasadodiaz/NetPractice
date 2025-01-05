@@ -229,7 +229,8 @@ In NetPractice, the routing table consists of 2 elements:
 + 6th, set Host B route table destination to default to and next-hop to interface R2.
   
   ### Level 06
-![image](https://github.com/user-attachments/assets/9a47bb19-08e8-49ca-a3d8-6d6540cbb02f)
+![image](https://github.com/user-attachments/assets/11d39f0b-d1f1-4310-95a5-08e25a769610)
+
 
 
 
