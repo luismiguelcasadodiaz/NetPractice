@@ -266,7 +266,8 @@ We got the hot IP from internet in the route table (61.240.134.0/31) with a next
   
 ### level 07
 
-![image](https://github.com/user-attachments/assets/609b3f23-ac8b-4df3-b35a-96acae1f12eb)
+![image](https://github.com/user-attachments/assets/28fb3e6f-c761-4054-a747-5f5efef5f421)
+
 
 In this case we hace two routers (R1 & R2) and three networks:
 + Network 1: Host A and interface 1 of Router 1 (Two IPs)
