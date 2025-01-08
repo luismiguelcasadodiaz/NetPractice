@@ -346,9 +346,54 @@ We have a hint inside the route table of router 2. The next hop is the IP 152.23
   
 ## level 9
 
-![image](https://github.com/user-attachments/assets/24a12557-ab8c-4735-a198-18f62f97d15b)
+![image](https://github.com/user-attachments/assets/d9130b17-79f1-4b7f-b1f5-0e42d1bbb0a7)
+
+We have 5 networks:
+
+|Network|Hosts| restrictions|
+|1 |Host A & Host B| netmask = 255.255.255.128(/25)|
+|2 | router 1 & router 2| ip= 163.172.250.1 netmask = 255.255.255.252(/30)|
+|3|Host c| none|
+|4| host d | IP =82.95.53.200 netmask =255.255.192.0 (/18)
+|5| internet
+
++ 1st, calculate network 4.
+
+  | Name   |doted-decimal  |         binary address            |
+  |--------|---------------|-----------------------------------|
+  | mask/18|255.255.192.000|11111111.11111111.11000000.00000000|
+  |   ip   |082.095.053.200|01010010.01011111.00110101.11001000|
+  |  and   |082.095.000.000|01010010.01011111.00000000.00000000|
+  | net4/18|082.095.000.000|01010010.01011111.00000000.00000000|
+
+The network is 82.95.0.0/18. I choose the second IP for this network as 82.95.0.1
+
++ 2st. Calculate network 2
+
+  | Name   |doted-decimal  |         binary address            |
+  |--------|---------------|-----------------------------------|
+  | mask/30|255.255.255.252|11111111.11111111.11111111.11111100|
+  |   ip   |163.172.250.001|10100011.10101010.11111010.00000001|
+  |  and   |163.172.250.000|10100011.10101010.11111010.00000000|
+  | net2/30|163.172.250.000|01010010.10101010.00000000.00000000|
+
+The network is 163.172.250.000. it has only two active machines 163.172.250.1 (used) and 163.172.250.2 (available)
+
++ 3st calculate network 3.
+I will select another /18 compatible with network 4.
+
+ Let's choose 82.95.0.16/18 with active IP (82.95.0.17 and 82.95.0.18)
 
 
++ 4th Calculate network 1
+Must use a /25 mask, but compatible with already
+
+  | Name   |doted-decimal  |         binary address            |
+  |--------|---------------|-----------------------------------|
+  | mask/30|255.255.255.252|11111111.11111111.11111111.10000000|
+  |   ip   |163.172.250.001|10100011.10101010.11111010.00000001|
+  |  and   |163.172.250.000|10100011.10101010.11111010.00000000|
+  | net2/30|163.172.250.000|01010010.10101010.00000000.00000000|
 
 + 1st identify internet network
 
