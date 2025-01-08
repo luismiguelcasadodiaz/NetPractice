@@ -1,5 +1,5 @@
 # NetPractice
-This project is a general practical exercise to let you discover networking.
+This project is a general practical exercise that will let you discover networking.
 
 You will have to configure small-scale networks. 
 
@@ -14,7 +14,7 @@ An IPv4 address is a 32-bit number (). It uniquely identifies a host (computer o
 
 IP addresses are normally expressed in **dotted-decimal** format, with four numbers separated by periods, such as 192.168.123.132.
 
-To understand how *subnet masks* are used to distinguish between **hosts**, **networks**, and **subnetworks**, examine an IP address in binary notation.
+Examine an IP address in binary notation to understand how *subnet masks* are used to distinguish between **hosts**, **networks**, and **subnetworks**, 
 
 For example, the dotted-decimal IP address 192.168.123.132 is (in binary notation) the 32-bit number 11000000101010000111101110000100. This number may be hard to make sense of, so divide it into four parts of eight binary digits.
 
@@ -22,7 +22,7 @@ These 8-bit sections are known as **octets**. The example IP address, then, beco
 
 For a TCP/IP wide area network (WAN) to work efficiently as a collection of networks, the routers that pass packets of data between networks don't know the exact location of a host for which a packet of information is destined. Routers only know what network the host is a member of and use information stored in their route table to determine how to get the packet to the destination host's network. After the packet is delivered to the destination's network, the packet is delivered to the appropriate host.
 
-For this process to work, an **IP address has two parts**. The first part of an IP address is used as a **network address**, the last part as a **host address**. If you take the example 192.168.123.132 and divide it into these two parts, you get 192.168.123. Network .132 Host or 192.168.123.0 - network address. 0.0.0.132 - host address.
+For this process to work, an **IP address has two parts**. The first part of an IP address is used as a **network address**, and the last part as a **host address**. If you take the example 192.168.123.132 and divide it into these two parts, you get 192.168.123. Network .132 Host or 192.168.123.0 - network address. 0.0.0.132 - host address.
 
 
 ## Subnet mask
@@ -58,11 +58,11 @@ with the advent of classless inter-domain routing (CIDR), it's possible to use c
 ## Network classes
 Internet addresses are allocated by the InterNIC, the organization that administers the Internet. These IP addresses are divided into classes. The most common of them are classes A, B, and C. Classes D and E exist, but aren't used by end users. Each of the address classes has a different default subnet mask. You can identify the class of an IP address by looking at its first octet. Following are the ranges of Class A, B, and C Internet addresses, each with an example address:
 
-Class A networks use a default subnet mask of 255.0.0.0 and have 0-127 as their first octet. The address 10.52.36.11 is a class A address. Its first octet is 10, which is between 1 and 126, inclusive.
+Class A networks use a default subnet mask of 255.0.0.0 and have 0-127 as their first octet. The address 10.52.36.11 is a class A address. Its first octet is 10 and falls between 1 and 126, inclusive.
 
-Class B networks use a default subnet mask of 255.255.0.0 and have 128-191 as their first octet. The address 172.16.52.63 is a class B address. Its first octet is 172, which is between 128 and 191, inclusive.
+Class B networks use a default subnet mask of 255.255.0.0 and have 128-191 as their first octet. The address 172.16.52.63 is a class B address. Its first octet is 172 and falls between 128 and 191, inclusive.
 
-Class C networks use a default subnet mask of 255.255.255.0 and have 192-223 as their first octet. The address 192.168.123.132 is a class C address. Its first octet is 192, which is between 192 and 223, inclusive.
+Class C networks use a default subnet mask of 255.255.255.0 and have 192-223 as their first octet. The address 192.168.123.132 is a class C address. Its first octet is 192 and falls between 192 and 223, inclusive.
 
 In some scenarios, the default subnet mask values don't fit the organization's needs for one of the following reasons:
 
@@ -126,8 +126,8 @@ Goal 2: Same case. I change Host D's IP to 211.191.75.74
   
 ![image](https://github.com/user-attachments/assets/81cf9e50-dea4-4dd1-be9b-a8049b373aa0)
 
-We find the first switch. A switch is a device that connects multiple devices together in a single network. 
-The switch does not have any interfaces since it only distributes packets to its local network, and cannot talk directly to a network outside of its own.
+We find the first switch. A switch is a device that connects multiple devices in a single network. 
+The switch does not have interfaces since it only distributes packets to its local network, and cannot talk directly to a network outside of its own.
 
 + 1st, Detect the network we work with. 
   
@@ -150,7 +150,7 @@ The switch does not have any interfaces since it only distributes packets to its
 ![image](https://github.com/user-attachments/assets/b856284b-45fe-4bd8-9044-6330418bf009)
  
  We found a router. It is useless in this configuration cause we have only one network. 
- We do not need to connect differente networks, that is what the router was designed for.
+ We do not need to connect different networks, that is what the router was designed for.
 
 + 1st, Detect the network we work with. 
   
@@ -167,7 +167,7 @@ The switch does not have any interfaces since it only distributes packets to its
 + 2nd, Set the same mask for hosts A, B, and C. /23
 + 3rd, set Router's R1's IP to the first host of the network 118.001. Set B's IP to the last host of the network 118.254.
 
-  I believe this is a weird configuration....
+  I believe this is a weird configuration ...
   
   |Interface|IP|
   |---------|-----|
@@ -175,14 +175,14 @@ The switch does not have any interfaces since it only distributes packets to its
   |A1|85.126.118.254/23|
   |BA|85.126.119.132/23|
 
-  ...but the /23 has the last bit of 3rd byte available, so x.x.118.x and x.x.119.x belong to same network.
+  ...but the /23 has the last bit of the 3rd byte available, so x.x.118.x and x.x.119.x belong to the same network.
 
 
   ### Level 05
 
 ![image](https://github.com/user-attachments/assets/b42b183c-1c18-4a52-92b6-a0428d6fe393)
 
-In this configuraion the router is functional. There are two networks to connect. Since the router separates different networks, the range of possible IP addresses on one of its interfaces must not overlap with the range of its other interfaces. An **overlap** in the IP address range would imply that the interfaces are on the same network.
+In this configuration the router is functional. There are two networks to connect. Since the router separates different networks, the range of possible IP addresses on one of its interfaces must not overlap with the range of its other interfaces. An **overlap** in the IP address range would imply that the interfaces are on the same network.
 
 Here is the first time we see a route. A routing table is a data table stored in a **router** or a **network host** that lists the routes to particular network destinations. 
 
@@ -191,8 +191,8 @@ Here is the first time we see a route. A routing table is a data table stored in
 
 In NetPractice, the routing table consists of 2 elements:
 
-+  (left) **Destination** : The destination specifies a **network address** on which a host is the end target of the packets. The route of default or 0.0.0.0/0, is the route that takes effect when no other route is available for an IP destination address. The default route will use the next-hop address to send the packets on their way without giving a specific destination. The default route will match any network.
-+  (right) **Next hop** : The next hop refers to the **next closest router a packet can go through**. It is the IP address of the next router on the packet's way. Every single router maintains its routing table with a next hop address.
++  (left) **Destination**: The destination specifies a **network address** on which a host is the end target of the packets. The route of default or 0.0.0.0/0, is the route that takes effect when no other route is available for an IP destination address. The default route will use the next-hop address to send the packets on their way without giving a specific destination. The default route will match any network.
++  (right) **Next hop** : The next hop refers to the **next closest router a packet can go through**. It is the IP address of the next router on the packet's way. Every single router maintains its routing table with a next-hop address.
 
 
 
@@ -223,17 +223,17 @@ In NetPractice, the routing table consists of 2 elements:
   | last|161.154.255.254|10100001.10011010.11111111.11111110|
   | brdc|161.154.255.255|10100001.10011010.01110110.11111111|
   
-+ 3rd, choose one IP for host A between  001..126 (86.184.183.124).
-+ 4th, set Host A route table destination to other network (161.154.192.0/18) to and the next-hop to Interface R1 in router. I set it to other network cause ther are only two networks.
-+ 5th, Choose one IP for host B between 0001..254 (161.154.207.253).
++ 3rd, choose one IP for host A between  001 and  126 (86.184.183.124).
++ 4th, set Host A route table destination to other network (161.154.192.0/18) to and the next-hop to Interface R1 in router. I set it to another network cause there are only two networks.
++ 5th, Choose one IP for host B between 0001 and 254 (161.154.207.253).
 + 6th, set Host B route table destination to default to and next-hop to interface R2.
   
   ### Level 06
 ![image](https://github.com/user-attachments/assets/11d39f0b-d1f1-4310-95a5-08e25a769610)
 
 
-We have to connect Host A (61.240.134.227/24) to internet. 
-In this level, it is the first time we deal with the internet thru a hot IP. The internet connection cannot have an IP address in the reserved private IP ranges
+We must connect Host A (61.240.134.227/24) to the internet. 
+At this level, we deal with the internet through a hot IP. The internet connection cannot have an IP address in the reserved private IP ranges
 
 |rfc 1918 name|       IP adress range       | Number of addresses|
 |-------------|-----------------------------|--------------------|
@@ -242,8 +242,8 @@ In this level, it is the first time we deal with the internet thru a hot IP. The
 |16-bit block |10.0.0.0 - 10.255.255.255    | 16,777,216|
 
 we have a router with two interfaces.
-The router's interface connecting to internet is R2 (163.172.250.12). The interface connecting to local network is R1 (163.172.250.1). I have to remark here that this IP for interface R1 is a "**loopback number**" the router uses internally inside the routes table. Loopback interfaces are virtual interfaces within the router itself. They are primarily used for internal routing purposes and don't directly connect to any physical network. I remark this point cause we have a different interface R1 IP (61.240.134.254) related to the network address range.
-We got the hot IP from internet in the route table (61.240.134.0/31) with a next-hop thru router interface R2 (163.172.250.12)
+The router's interface connecting to the internet is R2 (163.172.250.12). The interface connecting to the local network is R1 (163.172.250.1). I have to remark here that this IP for interface R1 is a "**loopback number**" the router uses internally inside the routes table. Loopback interfaces are virtual interfaces within the router itself. They are primarily used for internal routing and don't directly connect to any physical network. I remark on this point cause we have a different interface R1 IP (61.240.134.254) related to the network address range.
+We got the hot IP from the internet in the routing table (61.240.134.0/31) with a next-hop thru router interface R2 (163.172.250.12)
 
   
 + 1st, identification of network A
@@ -259,25 +259,25 @@ We got the hot IP from internet in the route table (61.240.134.0/31) with a next
   | brdc|061.240.134.255|00111101.11110000.10000110.11111111|
 
   + 2nd, chose an IP for interface R1 (last-> 061.240.134.254),
-  + 3rd, add it to host A's route table as next-hop for default destination
+  + 3rd, add it to host A's route table as next-hop for the default destination
   + 4th, set in router's route table default destination to internal interface R1
-  + 5th, set in router's route table local network broadcast destinatin  (21.240.134.255/25) to internet interface R2.
+  + 5th, set in router's route table local network broadcast destination  (21.240.134.255/25) to internet interface R2.
   
 ### level 07
 
 ![image](https://github.com/user-attachments/assets/28fb3e6f-c761-4054-a747-5f5efef5f421)
 
 
-In this case we hace two routers (R1 & R2) and three networks:
+In this case, we have two routers (R1 & R2) and three networks:
 + Network 1: Host A and interface 1 of Router 1 (Two IPs)
 + Network 2: interface 2 of router 1 and interface 1 of router 2 (Two IPs).
 + Network 3: Interface 2 of router 2 and Host C (Two IPs).
 
-No overlap is allowed in 3 network's ips.
+No overlap is allowed in the 3 network's IPs.
 
-We requires only two active iPs per network. So a  /30 mask fits our requirements: (net, firs, last, broadcast)
+We require only two active iPs per network. So a  /30 mask fits our requirements: (net, first, last, broadcast)
 
-For network 1, Interface 1 of router 1 has an IP 109.198.14.1. Together with the mask /30 we have:
+For network 1, Interface 1 of router 1 has an IP 109.198.14.1. Together with the mask /30, we have:
 |name     |     ip     | Interface |
 |---------|------------|-----------|
 |net      |109.198.14.0|           |
@@ -285,7 +285,7 @@ For network 1, Interface 1 of router 1 has an IP 109.198.14.1. Together with the
 |last     |109.198.14.2| A1        |
 |broadcast|109.198.14.3|           |
 
-For network 2, Interface 2 of router 1 has an IP 109.198.14.254. Together with the mask /30 we have:
+For network 2, Interface 2 of router 1 has an IP 109.198.14.254. Together with the mask /30, we have:
 |name     |     ip       | Interface |
 |---------|--------------|-----------|
 |net      |109.198.14.252|           |
@@ -293,7 +293,7 @@ For network 2, Interface 2 of router 1 has an IP 109.198.14.254. Together with t
 |last     |109.198.14.254| R12       |
 |broadcast|109.198.14.255|           | 
 
-For network 3, the only restriciotn is not overlap with previous networks.
+For network 3, the only restriction is not to overlap with previous networks.
 |name     |     ip      | Interface |
 |---------|-------------|-----------|
 |net      |109.198.14.40|           |
@@ -314,10 +314,10 @@ Now the four routing tables are filled like this
 
 ![image](https://github.com/user-attachments/assets/b2964f72-c9cc-4afe-8614-f4fa85225a2a)
 
-we see that internet addreses are in the range 152.236.170.0/26.
+We see that internet addresses are in the range 152.236.170.0/26.
 
-Internally we requiere 3 subnet in this range.  a netmask /27 is not enough for 3. we will use /28.
-We have a hint inside route table of router 2. The next-hop is the IP 152.236.170.62
+Internally we require 3 subnets in this range.  a netmask /27 is not enough for 3. We will use /28.
+We have a hint inside the route table of router 2. The next hop is the IP 152.236.170.62
 
   | Name|doted-decimal  |         binary address            |
   |-----|---------------|-----------------------------------|
@@ -332,7 +332,8 @@ We have a hint inside route table of router 2. The next-hop is the IP 152.236.17
   | net3/28|156.236.170.016|00111101.11110000.10000110.00010000|
   | net4/28|156.236.170.000|00111101.11110000.10000110.00000000|
 
-  Once selected the 3 networks, as each network has only two devices i will use the first adn the last active IP from each network.
+  Once I selected the 3 networks, as each network has only two devices I will use the first and the last active IP from each network.
+  
 | Network |Interface| IP            |
 |---------|---------|---------------|
 |Network 1| R21     |156.236.170.049|
@@ -343,6 +344,9 @@ We have a hint inside route table of router 2. The next-hop is the IP 152.236.17
 |Network 3| C1      |156.236.170.030|
   
   
+## level 9
+
+![image](https://github.com/user-attachments/assets/24a12557-ab8c-4735-a198-18f62f97d15b)
 
 
 
