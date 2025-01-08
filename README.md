@@ -358,6 +358,7 @@ We have 5 networks:
 |5| internet
 
 + 1st, calculate network 4.
++ 
 
   | Name   |doted-decimal  |         binary address            |
   |--------|---------------|-----------------------------------|
@@ -368,7 +369,8 @@ We have 5 networks:
 
 The network is 82.95.0.0/18. I choose the second IP for this network as 82.95.0.1
 
-+ 2st. Calculate network 2
++ 2st, Calculate network 2.
+  
 
   | Name   |doted-decimal  |         binary address            |
   |--------|---------------|-----------------------------------|
@@ -379,21 +381,39 @@ The network is 82.95.0.0/18. I choose the second IP for this network as 82.95.0.
 
 The network is 163.172.250.000. it has only two active machines 163.172.250.1 (used) and 163.172.250.2 (available)
 
-+ 3st calculate network 3.
++ 3st, calculate network 3.
++ 
 I will select another /18 compatible with network 4.
 
  Let's choose 82.95.0.16/18 with active IP (82.95.0.17 and 82.95.0.18)
 
 
-+ 4th Calculate network 1
-Must use a /25 mask, but compatible with already
++ 4th, Calculate network 1
+  
+Must use a /25 mask, but compatible with already selected networks. I start with the IP used for network 4
 
   | Name   |doted-decimal  |         binary address            |
   |--------|---------------|-----------------------------------|
-  | mask/30|255.255.255.252|11111111.11111111.11111111.10000000|
-  |   ip   |163.172.250.001|10100011.10101010.11111010.00000001|
-  |  and   |163.172.250.000|10100011.10101010.11111010.00000000|
-  | net2/30|163.172.250.000|01010010.10101010.00000000.00000000|
+  | mask/25|255.255.255.252|11111111.11111111.11111111.10000000|
+  |   ip   |082.095.053.200|01010010.01011111.00110101.11001000|
+  |  and   |082.095.053.128|01010010.01011111.00110101.10000000|
+  | net1/25|082.095.053.128|01010010.01011111.00110101.10000000|
+
+
+The three active IP I selected for this network are 82.95.53.129, 82.95.53.130, and 82.95.53.131
+
+
++ 5th, I define a internet network with a mask enough for all networks /25 /18. i work with /23
+  
+  | Name   |doted-decimal  |         binary address            |
+  |--------|---------------|-----------------------------------|
+  | mask/25|255.255.255.252|11111111.11111111.11111110.00000000|
+  |   ip   |082.095.053.200|01010010.01011111.00110101.11001000|
+  |  and   |082.095.052.000|01010010.01011111.00110100.00000000|
+  | net1/25|082.095.052.000|01010010.01011111.00110100.00000000|
+
+
+  
 
 + 1st identify internet network
 
