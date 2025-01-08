@@ -350,12 +350,13 @@ We have a hint inside the route table of router 2. The next hop is the IP 152.23
 
 We have 5 networks:
 
-|Network|Hosts| restrictions|
-|1 |Host A & Host B| netmask = 255.255.255.128(/25)|
-|2 | router 1 & router 2| ip= 163.172.250.1 netmask = 255.255.255.252(/30)|
-|3|Host c| none|
-|4| host d | IP =82.95.53.200 netmask =255.255.192.0 (/18)
-|5| internet
+|Network|Hosts               | restrictions|
+|-------|--------------------|-------------------------------------------------|
+|1      | Host A & Host B    | netmask = 255.255.255.128(/25)                  |
+|2      | Router 1 & Router 2| ip= 163.172.250.1 netmask = 255.255.255.252(/30)|
+|3      | Host c             | none                                            |
+|4      | Host d             | IP =82.95.53.200 netmask =255.255.192.0 (/18)   |
+|5      | internet           |                                                 |
 
 + 1st, calculate network 4.
 + 
