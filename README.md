@@ -414,16 +414,27 @@ The three active IP I selected for this network are 82.95.53.129, 82.95.53.130, 
   | net1/25|082.095.052.000|01010010.01011111.00110100.00000000|
 
 
-  
+  ## level 10
+  ![image](https://github.com/user-attachments/assets/50ef3d7c-57dd-4514-bad8-f020697a48ce)
 
-+ 1st identify internet network
+We have 4 networks
 
-  | Name|doted-decimal  |         binary address            |
-  |-----|---------------|-----------------------------------|
-  | mask|255.255.255.254|11111111.11111111.11111111.11111110|
-  |   ip|061.240.134.227|00111101.11110000.10000110.00000001|
-  |  and|061.240.134.000|00111101.11110000.10000110.00000000|
-  |  net|061.240.134.000|00111101.11110000.10000110.00000000|
-  |first|078.147.070.129|01001110.10010011.01000110.10000001|
-  | last|078.147.070.129|01001110.10010011.01000110.10000001|
-  | brdc|078.147.070.129|01001110.10010011.01000110.11111111|
+|Network|Hosts               | restrictions|
+|-------|--------------------|--------------------------------------------------------|
+|1      | Host one & Host two| IP = 151.158.48.1 & 2 netmask = 255.255.255.128(/25)   |
+|2      | Router 1 & Router 2| ip= 151.158.48.253 & 254 netmask = 255.255.255.252(/30)|
+|3      | Host four          | net = 151.158.48.128/26 ip= 151.158.48.131 & 129 netmask = 255.255.255.252(/26)                                    |
+|4      | Host three         | differente IPs form previous network |  |
+|5      | internet           |  151.158.48.0/31                      |                         |
+
++1st, we fix the 3rd ip in network 1 (151.158.48.3) and set same mask for all host.
++2nd, we set the same mask for interfaces R13 & R21.
++3rd, we fix interface R23 to 151.158.48.254 and copy the mask from Host four to R23.
++4th, we need to identify two IPs for this network that do not exist in previous networks for the internet address range 151.158.48.0/31.
+
+IPs 1 to 127 are in network 1, with a /25 mask.
+IPs 129 to 191 are in network 3 with a /26 mask.
+IPs 253 and 254 are in network 2 with a /30 mask.
+Available IPs are 193 to 251. with a /27 mask we have two networks. -One for IPs between 193 and 223 and one between 225 and 254. I select 193 and 194.
+Fill the gap in route one routing table to 151.158.48.192/27.
+
