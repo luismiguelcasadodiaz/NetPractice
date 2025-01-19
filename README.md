@@ -435,6 +435,6 @@ We have 4 networks
 IPs 1 to 127 are in network 1, with a /25 mask.
 IPs 129 to 191 are in network 3 with a /26 mask.
 IPs 253 and 254 are in network 2 with a /30 mask.
-Available IPs are 193 to 251. with a /27 mask we have two networks. -One for IPs between 193 and 223 and one between 225 and 254. I select 193 and 194.
+Available IPs are 193 to 251. with a /27 mask we have two networks. -One for IPs between 193 and 223 and one between 225 and 254. The last one overlaps with ips in network two. So, the only option is a network 151.158.48.192/27. I select IPs 193 and 194.
 Fill the gap in route one routing table to 151.158.48.192/27.
 
